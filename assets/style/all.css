@@ -14331,8 +14331,7 @@ input:focus, select:focus {
   margin-top: 0;
 }
 
-.leaflet-popup-top-container {
-  left: 60%;
+.leaflet-popup-tip-container {
   margin-top: -.5rem;
 }
 
