@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><%- title %></title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
     <link rel="stylesheet" href="./assets/style/all.css">
   </head>
@@ -13,44 +16,98 @@
   <body>
     <header class="header">
       <div class="container">
-        <div class="header-body">
-          <div class="hamburger"></div>
-          <a href="/" class="logo">
-            <img src="./assets/images/logo-lightmode.png" alt="Din Din Cycling Travel">
+        <div class="header-body d-flex flex-row-reverse flex-md-row justify-content-md-between align-items-center">
+          <!-- Hamburger -->
+          <div class="hamburger-body">
+            <input type="checkbox" id="hamToggle" class="d-none">
+            <label for="hamToggle" class="hamburger">
+              <div class="hambun top-bun"></div>
+              <div class="hambun bottom-bun"></div>
+            </label>
+            <!-- Nav-hide -->
+            <nav class="nav-hide">
+              <ul class="nav-hide-list text-center">
+                <li><a class="nav-list-link" href="/" title="常見問題">常見問題</a></li>
+                <li><a class="nav-list-link" href="/" title="關於我們">關於我們</a></li>
+                <li><a class="nav-list-link" href="/" title="Ubike官網">Ubike官網</a></li>
+              </ul>
+            </nav>
+          </div>
+          <!-- Logo -->
+          <a href="/" class="logo" title="回到首頁">
+            <img class="logo-img" src="./assets/images/logo-lightmode.svg" alt="Din Din Cycling Travel">
           </a>
+          <!-- Nav -->
           <nav>
-            <ul class="nav-list">
-              <li><a href="">探索地圖</a></li>
-              <li><a href="">單車活動</a></li>
+            <ul class="nav-list d-none d-md-flex">
+              <li><a class="nav-list-link" href="" title="探索地圖">探索地圖</a></li>
+              <li><a class="nav-list-link" href="" title="單車活動">單車活動</a></li>
             </ul>
           </nav>
         </div>
       </div>
     </header>
+    
 
     <%- contents %>
 
-    <footer class="footer">
+    <footer class="footer bg-primary text-white py-11 p-lg-12">
       <div class="container">
-        <div class="footer-body">
-          <ul class="footer-body-s">
-            <li>106 台北市大安區敦化南路二段95號29樓</li>
-            <li>Undestructable_Translator@company.com</li>
+        <div class="footer-body d-md-flex justify-content-between align-items-center">
+          <!-- Contact -->
+          <ul class="footer-body-s fs-5 text-center text-md-start">
+            <li class="mb-2">106 台北市大安區敦化南路二段95號29樓</li>
+            <li class="mb-2">Undestructable_Translator@company.com</li>
             <li>(00) 555-0103</li>
           </ul>
+          <!-- Social-link -->
           <div class="footer-body-e">
-            <ul>
-              <li><a href="/"><img src="" alt=""></a></li>
-              <li><a href="/"><img src="" alt=""></a></li>
-              <li><a href="/"><img src="" alt=""></a></li>
-              <li><a href="/"><img src="" alt=""></a></li>
+            <ul class="d-flex justify-content-center justify-content-md-end my-6 mt-md-0">
+              <li class="me-4">
+                <a class="social-link" href="/" title="Go to Facebook">
+                  <svg width="28" height="30" viewBox="0 0 28 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13.92 0.600006C6.2321 0.600006 0 7.04701 0 15C0 22.953 6.2321 29.4 13.92 29.4C21.6079 29.4 27.84 22.953 27.84 15C27.84 7.04701 21.6079 0.600006 13.92 0.600006ZM17.2173 10.551H15.125C14.877 10.551 14.6015 10.8885 14.6015 11.337V12.9H17.2188L16.8229 15.129H14.6015V21.8205H12.1322V15.129H9.8919V12.9H12.1322V11.589C12.1322 9.70801 13.3937 8.17951 15.125 8.17951H17.2173V10.551Z" fill="white" fill-opacity="0.85"/>
+                  </svg>                    
+                </a>
+              </li>
+              <li class="me-4">
+                <a class="social-link" href="/" title="Go to Instagram">
+                  <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19.5 15C19.5 16.1935 19.0259 17.3381 18.182 18.182C17.338 19.0259 16.1934 19.5 15 19.5C13.8065 19.5 12.6619 19.0259 11.818 18.182C10.9741 17.3381 10.5 16.1935 10.5 15C10.5 14.7435 10.527 14.493 10.5735 14.25H8.99998V20.2455C8.99998 20.6625 9.33747 21 9.75447 21H20.247C20.4468 20.9996 20.6383 20.9199 20.7795 20.7785C20.9207 20.637 21 20.4454 21 20.2455V14.25H19.4265C19.473 14.493 19.5 14.7435 19.5 15ZM15 18C15.394 17.9999 15.7842 17.9222 16.1483 17.7713C16.5123 17.6204 16.843 17.3993 17.1216 17.1206C17.4002 16.8419 17.6211 16.511 17.7718 16.1469C17.9226 15.7828 18.0001 15.3926 18 14.9985C17.9999 14.6044 17.9222 14.2143 17.7713 13.8502C17.6204 13.4862 17.3993 13.1555 17.1205 12.8769C16.8418 12.5983 16.511 12.3773 16.1469 12.2266C15.7828 12.0759 15.3925 11.9984 14.9985 11.9985C14.2026 11.9987 13.4395 12.315 12.8768 12.8779C12.3142 13.4408 11.9983 14.2042 11.9985 15C11.9987 15.7959 12.315 16.559 12.8779 17.1216C13.4408 17.6842 14.2041 18.0002 15 18ZM18.6 11.85H20.3985C20.518 11.85 20.6326 11.8026 20.7172 11.7183C20.8018 11.6339 20.8496 11.5195 20.85 11.4V9.60151C20.85 9.48176 20.8024 9.36692 20.7177 9.28225C20.6331 9.19757 20.5182 9.15001 20.3985 9.15001H18.6C18.4802 9.15001 18.3654 9.19757 18.2807 9.28225C18.196 9.36692 18.1485 9.48176 18.1485 9.60151V11.4C18.15 11.6475 18.3525 11.85 18.6 11.85ZM15 0.600006C11.1809 0.600006 7.51816 2.11714 4.81764 4.81767C2.11711 7.51819 0.599976 11.1809 0.599976 15C0.599976 18.8191 2.11711 22.4818 4.81764 25.1823C7.51816 27.8829 11.1809 29.4 15 29.4C16.891 29.4 18.7635 29.0275 20.5106 28.3039C22.2577 27.5802 23.8451 26.5195 25.1823 25.1823C26.5195 23.8452 27.5802 22.2577 28.3038 20.5106C29.0275 18.7636 29.4 16.891 29.4 15C29.4 13.109 29.0275 11.2365 28.3038 9.48936C27.5802 7.74228 26.5195 6.15483 25.1823 4.81767C23.8451 3.4805 22.2577 2.41981 20.5106 1.69614C18.7635 0.972473 16.891 0.600006 15 0.600006ZM22.5 20.8335C22.5 21.75 21.75 22.5 20.8335 22.5H9.16648C8.24998 22.5 7.49998 21.75 7.49998 20.8335V9.16651C7.49998 8.25001 8.24998 7.50001 9.16648 7.50001H20.8335C21.75 7.50001 22.5 8.25001 22.5 9.16651V20.8335Z" fill="white" fill-opacity="0.85"/>
+                  </svg>                  
+                </a>
+              </li>
+              <li class="me-4">
+                <a class="social-link" href="/" title="Go to Twitter">
+                  <svg width="28" height="29" viewBox="0 0 28 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13.92 -9.15527e-05C6.2321 -9.15527e-05 0 6.44691 0 14.3999C0 22.3529 6.2321 28.7999 13.92 28.7999C21.6079 28.7999 27.84 22.3529 27.84 14.3999C27.84 6.44691 21.6079 -9.15527e-05 13.92 -9.15527e-05ZM19.5823 11.7959C19.5881 11.9189 19.5895 12.0419 19.5895 12.1619C19.5895 15.9119 16.8331 20.2334 11.79 20.2334C10.2998 20.236 8.8406 19.7932 7.58785 18.9584C7.801 18.9854 8.01995 18.9959 8.2418 18.9959C9.5265 18.9959 10.7083 18.5444 11.6464 17.7824C11.0747 17.7708 10.5207 17.575 10.0617 17.2222C9.6027 16.8694 9.26151 16.3773 9.0857 15.8144C9.49628 15.8952 9.91923 15.8782 10.3225 15.7649C9.70202 15.6351 9.14399 15.2873 8.74308 14.7804C8.34217 14.2735 8.12306 13.6388 8.1229 12.9839V12.9494C8.49265 13.1609 8.91605 13.2899 9.36555 13.3049C8.78381 12.9043 8.37199 12.2889 8.21432 11.5846C8.05664 10.8803 8.16502 10.1403 8.5173 9.51591C9.20599 10.3919 10.0648 11.1085 11.0382 11.6194C12.0116 12.1302 13.0779 12.4239 14.168 12.4814C14.0294 11.8729 14.089 11.234 14.3376 10.6642C14.5862 10.0943 15.0099 9.62539 15.5427 9.3303C16.0755 9.03522 16.6876 8.93049 17.2838 9.03242C17.8801 9.13434 18.4271 9.4372 18.8399 9.89391C19.4534 9.76832 20.0419 9.53549 20.5799 9.20541C20.3753 9.86261 19.9472 10.4207 19.3749 10.7759C19.9184 10.7082 20.4492 10.557 20.9496 10.3274C20.582 10.8973 20.1189 11.3946 19.5823 11.7959Z" fill="white" fill-opacity="0.85"/>
+                  </svg>                                
+                </a>
+              </li>
+              <li>
+                <a class="social-link" href="/" title="Go to Youtube">
+                  <svg width="28" height="29" viewBox="0 0 28 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16.2444 14.1494L12.9877 12.5774C12.7035 12.4409 12.47 12.5939 12.47 12.9194V15.8804C12.47 16.2059 12.7035 16.3589 12.9877 16.2224L16.2429 14.6504C16.5286 14.5124 16.5286 14.2874 16.2444 14.1494ZM13.92 -9.15527e-05C6.2321 -9.15527e-05 0 6.44691 0 14.3999C0 22.3529 6.2321 28.7999 13.92 28.7999C21.6079 28.7999 27.84 22.3529 27.84 14.3999C27.84 6.44691 21.6079 -9.15527e-05 13.92 -9.15527e-05ZM13.92 20.2499C6.7947 20.2499 6.67 19.5854 6.67 14.3999C6.67 9.21441 6.7947 8.54991 13.92 8.54991C21.0453 8.54991 21.17 9.21441 21.17 14.3999C21.17 19.5854 21.0453 20.2499 13.92 20.2499Z" fill="white" fill-opacity="0.85"/>
+                  </svg>                    
+                </a>
+              </li>
             </ul>
-            <p>Copyright © 2021 TRAVEL. All rights reserved.</p>
+            <p class="fs-6 text-center">Copyright © 2021 TRAVEL. All rights reserved.</p>
           </div>
         </div>
       </div>      
     </footer>
 
+    <!-- leaflet -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+    <!-- axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- jsSHA -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/3.2.0/sha.js"></script>
+    <!-- wicket -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wicket/1.3.8/wicket.min.js" integrity="sha512-aaiN+QIXD0N9Id865vSDEfttZJV9v8ZGh7jXMnYI2zbZhkSYOulS4IH0u4pC61/KXT20UedYzL5xi5siIg6mlw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
     <script src="./assets/js/vendors.js"></script>
     <script src="./assets/js/all.js"></script>
   </body>

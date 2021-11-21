@@ -1,0 +1,63 @@
+.main {
+  background-color: #F7F7F7;
+  padding-bottom: 2.75rem;
+  @include mobile {
+    margin-bottom: 0;
+  }
+}
+// 查詢工具區
+.searchbar {
+  margin-bottom: 2.75rem;
+  input, select {
+    padding-left: 2.75rem;
+  }
+}
+
+.searchbar-item {
+  position: relative;
+}
+
+.searchbar-icon {
+  position: absolute;
+  top: 0.75rem;
+  left: 1rem;
+}
+// 清單
+.search-result-list {
+  li:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+}
+
+// 地圖
+.bike-map-container {
+  position: relative;
+}
+.bike-map {
+  height: 742px;  
+}
+.switch-container {
+  position: absolute;
+  top: 1.625rem;
+  left: 4rem;
+}
+
+// leaflet 套件
+.leaflet-popup-content-wrapper {
+  border-radius: 0;
+  border-left: 2px solid $accent;
+  margin-bottom: .5rem;
+}
+
+.leaflet-popup-content {
+  margin: 0;
+}
+
+.leaflet-popup-content p {
+  margin-top: 0;
+}
+
+.leaflet-popup-top-container {
+  left: 60%;
+  margin-top: -.5rem;
+}

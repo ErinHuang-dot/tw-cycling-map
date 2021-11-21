@@ -1,0 +1,42 @@
+.hamburger-body {
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: $white;
+    z-index: 10;
+    text-align: center;
+    padding-top: 1rem;
+    position: relative;
+    @include between-mobile-Pad {
+        margin-left: calc(50% - 157px);
+    }
+    @include mobile {
+        margin-left: calc(50% - 127px);
+    }
+}
+.hamburger-body, .hamburger {
+    cursor: pointer;
+}
+
+
+.hambun {
+    width: 1.75rem;
+    height: 1px;
+    background-color: $primary;
+    margin-top: .5rem;
+    transition: all 0.3s ease-in-out;
+}
+
+// Animations
+#hamToggle:checked + .hamburger .top-bun {
+    transform: rotate(-45deg);
+}
+#hamToggle:checked + .hamburger .bottom-bun {
+    margin-top: -1px;
+    transform: rotate(45deg);
+}
+
+#hamToggle:checked + .hamburger + .nav-hide {
+    top: 100px;
+    display: block;
+    opacity: 1;
+}

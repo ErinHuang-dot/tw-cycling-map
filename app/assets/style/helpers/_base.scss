@@ -1,0 +1,40 @@
+body {
+    font-family: 'Overpass', 'Noto Sans TC', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0;
+}
+
+ol, ul, dl {
+    margin-bottom: 0;
+}
+
+ol, ul {
+    padding-left: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+// form
+input, select {
+    border: 1px solid $white;
+    letter-spacing: 1.6px;
+}
+
+input:focus, select:focus {
+    border: 1px solid $primary;
+}
+
+.form-select, .form-control {
+    border-radius: 0;
+}
+
+// breadcrumb
+.breadcrumb {
+    letter-spacing: 1.6px;   
+}
+
+

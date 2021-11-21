@@ -1,6 +1,19 @@
+// typography
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Overpass&display=swap');
+
+// helpers
 @import "../../../node_modules/bootstrap/scss/functions";
 @import "./helpers/variables";
 @import "../../../node_modules/bootstrap/scss/bootstrap";
+@import "./helpers/base";
+@import "./helpers/mixin";
 
+// components
+@import "./components/hamburger";
+@import "./components/card";
+@import "./components/switch";
 
-@import './layout/index.scss'
+// layout
+@import "./layout/layout";
+@import "./layout/index";
+@import "./layout/exploring";

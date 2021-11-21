@@ -1,0 +1,132 @@
+---
+title: Din Din - Cycling Travel in Taiwan
+layout: ./app/layout.ejs
+engine: ejs
+current: exploring
+---
+
+<div class="main pt-6 pt-md-8">
+    <div class="container">
+        <!-- 麵包屑 -->
+        <nav aria-label="breadcrumb" class="mb-6">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#" class="text-primary">首頁</a></li>
+              <li class="breadcrumb-item active" aria-current="page">探索地圖</li>
+            </ol>
+        </nav>
+        <!-- 查詢工具區 -->
+        <div class="searchbar">
+            <form class="d-flex" action="post" method="post">
+                <p class="searchbar-item search-keyword flex-grow-1 me-4">
+                    <input class="form-control" type="text" name="keyword" id="keyword" placeholder="想去哪裡?">
+                    <img class="searchbar-icon" src="./assets/images/search.svg" alt="">
+                </p>
+                <p class="searchbar-item d-none d-md-block me-4">
+                    <img class="searchbar-icon" src="./assets/images/map.svg" alt="">
+                    <select class="form-select" name="city" id="citySelect">
+                        <option value="">縣市</option>
+                        <option value="臺北市">臺北市</option>
+                        <option value="新北市">新北市</option>
+                    </select>
+                </p>
+                <p class="searchbar-item d-none d-md-block me-4">
+                    <img class="searchbar-icon" src="./assets/images/map-pin.svg" alt="">
+                    <select class="form-select" name="area" id="areaSelect">
+                        <option value="">區域</option>
+                        <option value="北區">北區</option>
+                        <option value="東區">東區</option>
+                    </select>
+                </p>
+                <p class="searchbar-item d-none d-md-block">
+                    <img class="searchbar-icon" src="./assets/images/sort.svg" alt="">
+                    <select class="form-select" name="order" id="orderSelect">
+                        <option value="">排序</option>
+                        <option value="由近到遠">由近到遠</option>
+                        <option value="由遠到近">由遠到近</option>
+                    </select>
+                </p>
+            </form>
+        </div>
+        <!-- 查詢結果 -->
+        <div class="search-result">
+            <div class="row">
+                <!-- 地圖 -->
+                <div class="col-8">
+                    <div class="bike-map-container">
+                        <div class="bike-map" id="bikeMap">
+                        </div>
+                        <!-- switch切換鈕 -->
+                        <div class="switch-container">
+                            <input class="d-none" type="checkbox" name="switch" id="switch">
+                            <label class="switch-btn" for="switch">
+                                <span class="switch-txt" turnOn="歸還模式" turnOff="租借模式"></span>
+                            </label>
+                        </div>
+                        <!-- bike站位hover卡片 -->
+                        <div class="rent-card card">
+                            <div class="card-body p-0">
+                                <div class="d-flex align-items-center mb-2">
+                                    <span class="card-tag card-tag-1 me-1">正常營運</span>
+                                    <span class="card-mark">UBike 2.0</span>
+                                    <a class="ms-auto" href="/" title="分享此站點"><img src="./assets/images/share.svg" alt=""></a>
+                                </div>
+                                <h4 class="card-title">櫻花棒球場</h4>
+                                <p class="card-subtitle fs-6 text-muted mb-2">櫻花路 / 洛陽路口</p>
+                                <p class="card-text fs-6">可租借數量 <span class="fs-4">18</span> 輛</p>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+                <!-- 卡片清單 -->
+                <div class="col-4">
+                    <ul class="search-result-list">
+                        <li>
+                            <div class="route-card card">
+                                <div class="card-body">
+                                    <div class="card-body-top d-flex justify-content-between align-items-center mb-2">
+                                        <h5 class="card-subtitle text-secondary mt-0">臺中市 大安區</h6>
+                                        <p>
+                                            <img src="./assets/images/distance.svg" alt="">
+                                            <small>26km</small> 
+                                        </p>                                        
+                                    </div>
+                                    <h4 class="card-title mb-3">臺中市大安濱海自行車道</h4>
+                                    <div class="card-body-bottom d-flex justify-content-between">
+                                        <p>
+                                            <img src="./assets/images/map-pin.svg" alt="">
+                                            <small>距離 26km</small> 
+                                        </p>
+                                        <a href="#" class="card-link stretched-link " title="查看更多路線資訊">查看更多</a>    
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="route-card card">
+                                <div class="card-body">
+                                    <div class="card-body-top d-flex justify-content-between align-items-center mb-2">
+                                        <h5 class="card-subtitle text-secondary mt-0">臺中市 沙鹿區</h6>
+                                        <p>
+                                            <img src="./assets/images/distance.svg" alt="">
+                                            <small>6.4km</small> 
+                                        </p>                                        
+                                    </div>
+                                    <h4 class="card-title mb-3">中二高高架橋下</h4>
+                                    <div class="card-body-bottom d-flex justify-content-between">
+                                        <p>
+                                            <img src="./assets/images/map-pin.svg" alt="">
+                                            <small>距離 6.4km</small> 
+                                        </p>
+                                        <a href="#" class="card-link stretched-link " title="查看更多路線資訊">查看更多</a>    
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

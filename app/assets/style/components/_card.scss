@@ -1,0 +1,61 @@
+// 路線卡片
+.route-card {
+    letter-spacing: 1.6px;
+    line-height: 1.42;
+    border-radius: 0;
+    border: 1px solid $white;
+    &:hover {
+        border: 1px solid $primary;        
+    }
+    .card-title {
+        letter-spacing: 0.48px;
+    }
+    .card-link {
+        font-weight: $font-weight-bold;
+    }
+}
+
+// 單車站點 hover 卡片
+.rent-card, .return-card {
+    width: 210px;
+    padding: 1.5rem 1.5rem 1.125rem;
+    .card-title {
+        letter-spacing: 1.6px;
+    }
+    p {
+        letter-spacing: 0.8px;       
+    }
+}
+.rent-card {
+    // border-bottom: 1px solid $accent; 原設計
+}
+
+.return-card {
+    border-bottom: 1px solid $primary;
+}
+
+.card-mark {
+    font-size: .5rem;   
+}
+
+// 營運狀態標籤
+.card-tag {
+    font-size: .5rem;
+    letter-spacing: 0.8px;
+    padding: .125rem .25rem;
+}
+
+.card-tag-0 {
+    background-color: $primary;
+    color: $white;
+} // 停止營運
+
+.card-tag-1 {
+    background-color: $secondary;
+    color: $white;    
+} // 正常營運
+
+.card-tag-2 {
+    background-color: $accent;
+    color: $primary;    
+} // 暫停營運
