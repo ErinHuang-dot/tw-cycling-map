@@ -14068,8 +14068,12 @@ input:focus, select:focus {
   letter-spacing: 0.8px;
 }
 
+.rent-card {
+  border-left: 2px solid #F6A21A;
+}
+
 .return-card {
-  border-bottom: 1px solid #1F1E1D;
+  border-left: 2px solid #1F1E1D;
 }
 
 .card-mark {
@@ -14175,25 +14179,25 @@ input:focus, select:focus {
   text-align: right;
 }
 
-#switch:checked ~ label {
+#switchMode:checked ~ label {
   -webkit-transform: translatex(105px);
       -ms-transform: translatex(105px);
           transform: translatex(105px);
 }
 
-#switch:checked ~ label::before {
+#switchMode:checked ~ label::before {
   opacity: 0;
 }
 
-#switch:checked ~ label::after {
+#switchMode:checked ~ label::after {
   opacity: 1;
 }
 
-#switch:checked + .switch-btn .switch-txt {
+#switchMode:checked + .switch-btn .switch-txt {
   margin-left: -176%;
 }
 
-#switch ~ label {
+#switchMode ~ label {
   -webkit-transition: all 1s cubic-bezier(0.34, 1.36, 0.2, 1);
   -o-transition: all 1s cubic-bezier(0.34, 1.36, 0.2, 1);
   transition: all 1s cubic-bezier(0.34, 1.36, 0.2, 1);
@@ -14319,7 +14323,7 @@ input:focus, select:focus {
 
 .leaflet-popup-content-wrapper {
   border-radius: 0;
-  border-left: 2px solid #F6A21A;
+  padding: 0;
   margin-bottom: .5rem;
 }
 

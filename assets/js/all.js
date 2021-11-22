@@ -92,12 +92,40 @@ function getAvailableData(longitude, latitude) {
   })["catch"](function (error) {
     return console.log('error', error);
   });
-} // 標記 icon
+} // default:rent-mode-icon
 
 
 function setMarker() {
   filterData.forEach(function (item) {
-    L.marker([item.StationPosition.PositionLat, item.StationPosition.PositionLon]).addTo(mymap).bindPopup("\n          <div class=\"rent-card card\">\n            <div class=\"card-body p-0\">\n                <div class=\"d-flex align-items-center mb-2\">\n                    <span class=\"card-tag card-tag-1 me-1\">\u6B63\u5E38\u71DF\u904B</span>\n                    <a class=\"ms-auto\" href=\"/\" title=\"\u5206\u4EAB\u6B64\u7AD9\u9EDE\"><img src=\"./assets/images/share.svg\" alt=\"\"></a>\n                </div>\n                <h4 class=\"card-title\">".concat(item.StationName.Zh_tw, "</h4>\n                <p class=\"card-subtitle fs-6 text-muted mb-2\">").concat(item.StationAddress.Zh_tw, "</p>\n                <p class=\"card-text fs-6\">\u53EF\u79DF\u501F\u6578\u91CF <span class=\"fs-4\">").concat(item.AvailableRentBikes, "</span> \u8F1B</p>\n            </div>\n          </div>\n          "));
+    var rentIcon = L.icon({
+      iconUrl: '../assets/images/map_rent-mode-shadow.svg',
+      iconSize: [54, 54],
+      iconAnchor: [70, 50],
+      popupAnchor: [-45, -50]
+    });
+    L.marker([item.StationPosition.PositionLat, item.StationPosition.PositionLon], {
+      icon: rentIcon
+    }).addTo(mymap).bindPopup("\n            <div class=\"rent-card card\">\n                <div class=\"card-body p-0\">\n                    <div class=\"d-flex align-items-center mb-2\">\n                        <span class=\"card-tag card-tag-1 me-1\">\u6B63\u5E38\u71DF\u904B</span>\n                        <a class=\"ms-auto\" href=\"/\" title=\"\u5206\u4EAB\u6B64\u7AD9\u9EDE\"><img src=\"./assets/images/share.svg\" alt=\"\"></a>\n                    </div>\n                    <h4 class=\"card-title\">".concat(item.StationName.Zh_tw, "</h4>\n                    <p class=\"card-subtitle fs-6 text-muted mb-2\">").concat(item.StationAddress.Zh_tw, "</p>\n                    <p class=\"card-text fs-6\">\u53EF\u79DF\u501F\u6578\u91CF <span class=\"fs-4\">").concat(item.AvailableRentBikes, "</span> \u8F1B</p>\n                </div>\n            </div>\n          "));
   });
-} // 自製 icon
+} // switch control + custom icon + binPopup
+
+
+var switchMode = document.querySelector('#switchMode');
+switchMode.addEventListener('change', function (e) {
+  if (e.target.checked) {
+    filterData.forEach(function (item) {
+      var returnIcon = L.icon({
+        iconUrl: '../assets/images/map_return-mode-shadow.svg',
+        iconSize: [54, 54],
+        iconAnchor: [70, 50],
+        popupAnchor: [-45, -50]
+      });
+      L.marker([item.StationPosition.PositionLat, item.StationPosition.PositionLon], {
+        icon: returnIcon
+      }).addTo(mymap).bindPopup("\n                <div class=\"return-card card\">\n                    <div class=\"card-body p-0\">\n                        <div class=\"d-flex align-items-center mb-2\">\n                            <span class=\"card-tag card-tag-1 me-1\">\u6B63\u5E38\u71DF\u904B</span>\n                            <a class=\"ms-auto\" href=\"/\" title=\"\u5206\u4EAB\u6B64\u7AD9\u9EDE\"><img src=\"./assets/images/share.svg\" alt=\"\"></a>\n                        </div>\n                        <h4 class=\"card-title\">".concat(item.StationName.Zh_tw, "</h4>\n                        <p class=\"card-subtitle fs-6 text-muted mb-2\">").concat(item.StationAddress.Zh_tw, "</p>\n                        <p class=\"card-text fs-6\">\u53EF\u6B78\u9084\u6578\u91CF <span class=\"fs-4\">").concat(item.AvailableReturnBikes, "</span> \u8F1B</p>\n                    </div>\n                </div>\n              "));
+    });
+  } else {
+    setMarker(); // 如果已選地標不會及時切換
+  }
+});
 //# sourceMappingURL=all.js.map
