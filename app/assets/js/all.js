@@ -101,7 +101,7 @@ function setMarker() {
     filterData.forEach((item) => {
 
         let rentIcon = L.icon ({
-            iconUrl: '../assets/images/map_rent-mode-shadow.svg',
+            iconUrl: '/tw-cycling-map/assets/images/map_rent-mode-shadow.svg', // 上傳到github路徑需修改
             iconSize: [54,54],
             iconAnchor: [70,50],
             popupAnchor:  [-45, -50]
@@ -131,7 +131,7 @@ switchMode.addEventListener('change', (e) =>{
         filterData.forEach((item) => {
 
             let returnIcon = L.icon ({
-                iconUrl: '../assets/images/map_return-mode-shadow.svg',
+                iconUrl: '/tw-cycling-map/assets/images/map_return-mode-shadow.svg',
                 iconSize: [54,54],
                 iconAnchor: [70,50],
                 popupAnchor:  [-45, -50]
