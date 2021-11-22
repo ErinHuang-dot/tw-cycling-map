@@ -74,20 +74,20 @@
 
 
 // animations
-#switch:checked ~ label {
+#switchMode:checked ~ label {
     transform: translatex(105px);
 }
-#switch:checked ~ label::before {
+#switchMode:checked ~ label::before {
     opacity: 0;
 }
-#switch:checked ~ label::after {
+#switchMode:checked ~ label::after {
     opacity: 1;
 }
-#switch:checked + .switch-btn .switch-txt {
+#switchMode:checked + .switch-btn .switch-txt {
     margin-left: -176%;
 }
 
-#switch ~ label {
+#switchMode ~ label {
     transition: all 1s cubic-bezier(0.34, 1.36, 0.2, 1);
 }
 

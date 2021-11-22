@@ -96,25 +96,65 @@ function getAvailableData(longitude, latitude) {
     .catch((error) => console.log('error', error))
 }
 
-// 標記 icon
+// default:rent-mode-icon
 function setMarker() {
-  filterData.forEach((item) => {
-      L.marker([item.StationPosition.PositionLat, item.StationPosition.PositionLon]).addTo(mymap).bindPopup(
+    filterData.forEach((item) => {
+
+        let rentIcon = L.icon ({
+            iconUrl: '../assets/images/map_rent-mode-shadow.svg',
+            iconSize: [54,54],
+            iconAnchor: [70,50],
+            popupAnchor:  [-45, -50]
+        })
+
+        L.marker([item.StationPosition.PositionLat, item.StationPosition.PositionLon], {icon :rentIcon}).addTo(mymap).bindPopup(
           `
-          <div class="rent-card card">
-            <div class="card-body p-0">
-                <div class="d-flex align-items-center mb-2">
-                    <span class="card-tag card-tag-1 me-1">正常營運</span>
-                    <a class="ms-auto" href="/" title="分享此站點"><img src="./assets/images/share.svg" alt=""></a>
+            <div class="rent-card card">
+                <div class="card-body p-0">
+                    <div class="d-flex align-items-center mb-2">
+                        <span class="card-tag card-tag-1 me-1">正常營運</span>
+                        <a class="ms-auto" href="/" title="分享此站點"><img src="./assets/images/share.svg" alt=""></a>
+                    </div>
+                    <h4 class="card-title">${item.StationName.Zh_tw}</h4>
+                    <p class="card-subtitle fs-6 text-muted mb-2">${item.StationAddress.Zh_tw}</p>
+                    <p class="card-text fs-6">可租借數量 <span class="fs-4">${item.AvailableRentBikes}</span> 輛</p>
                 </div>
-                <h4 class="card-title">${item.StationName.Zh_tw}</h4>
-                <p class="card-subtitle fs-6 text-muted mb-2">${item.StationAddress.Zh_tw}</p>
-                <p class="card-text fs-6">可租借數量 <span class="fs-4">${item.AvailableRentBikes}</span> 輛</p>
             </div>
-          </div>
           `
       )
   })
 }
-// 自製 icon
+// switch control + custom icon + binPopup
+const switchMode = document.querySelector('#switchMode');
+switchMode.addEventListener('change', (e) =>{
+    if (e.target.checked) {
+        filterData.forEach((item) => {
+
+            let returnIcon = L.icon ({
+                iconUrl: '../assets/images/map_return-mode-shadow.svg',
+                iconSize: [54,54],
+                iconAnchor: [70,50],
+                popupAnchor:  [-45, -50]
+            })
+    
+            L.marker([item.StationPosition.PositionLat, item.StationPosition.PositionLon], {icon :returnIcon}).addTo(mymap).bindPopup(
+              `
+                <div class="return-card card">
+                    <div class="card-body p-0">
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="card-tag card-tag-1 me-1">正常營運</span>
+                            <a class="ms-auto" href="/" title="分享此站點"><img src="./assets/images/share.svg" alt=""></a>
+                        </div>
+                        <h4 class="card-title">${item.StationName.Zh_tw}</h4>
+                        <p class="card-subtitle fs-6 text-muted mb-2">${item.StationAddress.Zh_tw}</p>
+                        <p class="card-text fs-6">可歸還數量 <span class="fs-4">${item.AvailableReturnBikes}</span> 輛</p>
+                    </div>
+                </div>
+              `
+          )
+      })
+    } else {
+        setMarker(); // 如果已選地標不會及時切換
+    }
+})
 

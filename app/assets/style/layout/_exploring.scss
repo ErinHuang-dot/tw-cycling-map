@@ -45,7 +45,8 @@
 // leaflet 套件
 .leaflet-popup-content-wrapper {
   border-radius: 0;
-  border-left: 2px solid $accent;
+  padding: 0;
+  // border-left: 2px solid $accent;
   margin-bottom: .5rem;
 }
 
@@ -57,7 +58,6 @@
   margin-top: 0;
 }
 
-.leaflet-popup-top-container {
-  left: 60%;
+.leaflet-popup-tip-container {
   margin-top: -.5rem;
 }
