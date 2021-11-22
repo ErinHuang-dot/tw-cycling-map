@@ -98,7 +98,8 @@ function getAvailableData(longitude, latitude) {
 function setMarker() {
   filterData.forEach(function (item) {
     var rentIcon = L.icon({
-      iconUrl: '../assets/images/map_rent-mode-shadow.svg',
+      iconUrl: '/tw-cycling-map/assets/images/map_rent-mode-shadow.svg',
+      // 上傳到github路徑需修改
       iconSize: [54, 54],
       iconAnchor: [70, 50],
       popupAnchor: [-45, -50]
@@ -115,7 +116,7 @@ switchMode.addEventListener('change', function (e) {
   if (e.target.checked) {
     filterData.forEach(function (item) {
       var returnIcon = L.icon({
-        iconUrl: '../assets/images/map_return-mode-shadow.svg',
+        iconUrl: '/tw-cycling-map/assets/images/map_return-mode-shadow.svg',
         iconSize: [54, 54],
         iconAnchor: [70, 50],
         popupAnchor: [-45, -50]
